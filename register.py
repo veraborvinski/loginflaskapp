@@ -15,8 +15,7 @@ cursor = cnx.cursor()
 create_database(cnx,cursor)
 
 @app.route('/')
-def hello_world():
-    return 'Hello World!'
+return render_template('login.html', error=error)
 
 @app.route('/Sub')
 def sub_page():
