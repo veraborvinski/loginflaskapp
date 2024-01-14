@@ -16,6 +16,15 @@ create_database(cnx,cursor)
 
 @app.route('/')
 def login():
+     if request.method == 'POST':
+          username= request.form['username']
+          password= request.form['password']
+          
+          cnx = mysql.connector.connect(user='remoteAccess', password='1234abcz',host='35.189.78.49', port=3306)
+          cursor = cnx.cursor()
+          check_if_user_exists(cnx,cursor,username,password)
+          
+          return redirect("http://35.246.117.159")
      return render_template('login.html', error=None)
 
 @app.route('/Sub')
@@ -26,7 +35,6 @@ def sub_page():
 def register():
     error = None
     if request.method == 'POST':
-         print("i'm running a post method")
          username= request.form['username']
          password= request.form['password']
          
