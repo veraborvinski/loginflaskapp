@@ -22,7 +22,7 @@ def login():
           password= request.form['password']
           
           cnx = mysql.connector.connect(user='remoteAccess', password='1234abcz',host='35.189.78.49', port=3306)
-          cursor = cnx.cursor()
+          cursor = cnx.cursor(buffered=True)
           if check_if_user_exists(cnx,cursor,username,password):
                return redirect("http://35.246.117.159")
           else:
