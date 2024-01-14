@@ -66,7 +66,7 @@ def check_if_user_exists(cnx,cursor,username,key):
     cursor.execute(user_statement)
     
     if cursor.rowcount:
-        return True
+        user_exists = True
     cursor.close()
     cnx.close()
     return user_exists
