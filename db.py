@@ -61,13 +61,12 @@ def insert_user(cnx,cursor,username,key):
     cnx.close()
 
 def check_if_user_exists(cnx,cursor,username,key):
-    user_statement = "SELECT EXISTS (SELECT * FROM AccessKeys.AccessKey WHERE username LIKE '"+username+"' AND keynum LIKE '"+key+"') AS result;"
-
+    user_exists = False
+    user_statement = "SELECT * FROM AccessKeys.AccessKey WHERE username LIKE '"+username+"' AND keynum LIKE '"+key+"';"
     cursor.execute(user_statement)
-    return_statement = cursor.fetchall()
+    
+    if cursor.rowcount:
+        return True
     cursor.close()
     cnx.close()
-    if "1" in return_statement:
-        return True
-    else:
-        return False
+    return user_exists
