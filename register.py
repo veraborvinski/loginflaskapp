@@ -14,7 +14,7 @@ cnx = mysql.connector.connect(user='remoteAccess', password='1234abcz',host='35.
 cursor = cnx.cursor()
 create_database(cnx,cursor)
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def login():
      if request.method == 'POST':
           username= request.form['username']
