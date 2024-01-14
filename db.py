@@ -64,7 +64,10 @@ def check_if_user_exists(cnx,cursor,username,key):
     user_statement = "SELECT EXISTS (SELECT * FROM AccessKeys.AccessKey WHERE username LIKE '"+username+"' AND keynum LIKE '"+key+"') AS result;"
 
     cursor.execute(user_statement)
-    print("result of query: ")
-    print(cursor.fetchall())
+    return_statement = cursor.fetchall()
     cursor.close()
     cnx.close()
+    if "1" in return_statement):
+        return True
+    else:
+        return False
