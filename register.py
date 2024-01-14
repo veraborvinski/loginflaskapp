@@ -24,7 +24,7 @@ def login():
           cnx = mysql.connector.connect(user='remoteAccess', password='1234abcz',host='35.189.78.49', port=3306)
           cursor = cnx.cursor(buffered=True)
           if check_if_user_exists(cnx,cursor,username,password):
-               return redirect(url_for("http://35.242.152.88", username=username))
+               return redirect("http://35.242.152.88/username=%s" % username))
           else:
                error = "Wrong password or username"
      return render_template('login.html', error=error)
