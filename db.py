@@ -51,7 +51,6 @@ def create_database(cnx,cursor):
     cnx.close()
 
 def insert_user(cnx,cursor,username,key):
-    print("i'm trying to insert a user")
     add_user = ("INSERT INTO AccessKeys.AccessKey "
                "(username,keynum) "
                "VALUES (%s, %s)")
