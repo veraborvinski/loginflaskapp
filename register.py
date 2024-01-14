@@ -15,7 +15,7 @@ cursor = cnx.cursor()
 create_database(cnx,cursor)
 
 @app.route('/')
-def show_login_page():
+def login():
      return render_template('login.html', error=None)
 
 @app.route('/Sub')
@@ -23,7 +23,7 @@ def sub_page():
     return 'Sub Page'
 
 @app.route('/register', methods=['GET', 'POST'])
-def login():
+def register():
     error = None
     if request.method == 'POST':
         username= request.form['username']
