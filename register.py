@@ -26,14 +26,15 @@ def sub_page():
 def register():
     error = None
     if request.method == 'POST':
-        username= request.form['username']
-        password= request.form['password']
-
-        cnx = mysql.connector.connect(user='remoteAccess', password='1234abcz',host='35.189.78.49', port=3306)
-        cursor = cnx.cursor()
-        insert_user(cnx,cursor,username,password)
-
-        return redirect(url_for('login'))
+         print("i'm running a post method")
+         username= request.form['username']
+         password= request.form['password']
+         
+         cnx = mysql.connector.connect(user='remoteAccess', password='1234abcz',host='35.189.78.49', port=3306)
+         cursor = cnx.cursor()
+         insert_user(cnx,cursor,username,password)
+         
+         return redirect(url_for('login'))
     return render_template('register.html', error=error)
 
 if __name__ == '__main__':
