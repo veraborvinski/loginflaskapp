@@ -67,7 +67,7 @@ def check_if_user_exists(cnx,cursor,username,key):
     return_statement = cursor.fetchall()
     cursor.close()
     cnx.close()
-    if "1" in return_statement):
+    if "1" in return_statement:
         return True
     else:
         return False
