@@ -1,7 +1,7 @@
 variable "machine_name" {
   type        = string
   description = "The machine name"
-  default     = "myflix2"
+  default     = "login2"
 }
 
 variable "project" {
