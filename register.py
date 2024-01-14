@@ -16,16 +16,18 @@ create_database(cnx,cursor)
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
+     error = None
      if request.method == 'POST':
           username= request.form['username']
           password= request.form['password']
           
           cnx = mysql.connector.connect(user='remoteAccess', password='1234abcz',host='35.189.78.49', port=3306)
           cursor = cnx.cursor()
-          check_if_user_exists(cnx,cursor,username,password)
-          
-          return redirect("http://35.246.117.159")
-     return render_template('login.html', error=None)
+          if check_if_user_exists(cnx,cursor,username,password):
+               return redirect("http://35.246.117.159")
+          else:
+               error = "Wrong password or username"
+     return render_template('login.html', error=error)
 
 @app.route('/Sub')
 def sub_page():
